@@ -4,7 +4,12 @@ const tasks = (tasks = [], action) => {
             return [...tasks, action.payload];
         case "DO":
             return tasks.map((task) =>
-                task.id === action.payload.id ? action.payload : task
+                task.id === action.payload.id ?
+                {
+                    ...action.payload,
+                    state: action.payload.state === "Done" ? "undone" : "Done",
+                } :
+                task
             );
         case "DELETE":
             return tasks.filter((task) => task.id !== action.payload.id);

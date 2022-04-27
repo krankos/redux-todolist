@@ -13,7 +13,9 @@ export default function Task({ task }) {
       >
         {task.text}
       </li>
-      <button onClick={() => dispatch(doTask(task))}>✅DONE</button>
+      <button onClick={() => dispatch(doTask(task))}>
+        {task.state === "undone" ? "✅DONE" : "🔄UNDO"}
+      </button>
       <button onClick={() => dispatch(deleteTask(task))}>❌DELETE</button>
     </>
   );
